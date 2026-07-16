@@ -7,6 +7,8 @@
 ```
 presentations/
 ├── README.md          # 本文件（约定说明）
+├── index.html         # 导航首页（三阶入口 + 密码门，同风格）
+├── nav.css            # 导航首页皮肤
 └── ai-commons/        # 主题：AI 常识
     └── index.html     # 该主题的演示文稿
 ```
@@ -16,6 +18,14 @@ presentations/
 - `presentations/git-basics/`
 - `presentations/data-analysis/`
 - `presentations/css-cube/`
+
+### 导航首页（统一入口）
+
+`presentations/index.html` 是所有演示文稿的统一入口，复用 ai-commons 的深黑 / 蓝紫渐变皮肤，一张三卡网格，分别跳转 `ai-commons/`、`ai-primary/`、`ai-advanced/`。这样所有演示文稿可以一次性部署到 Vercel（把静态根指到 `presentations/`），无需为每个主题单独配部署。
+
+进入首页需要密码（纯前端校验，仅作轻量门槛，不是真正安全）。密码值写在 `index.html` 顶部 `ACCESS_PASSWORD` 常量里，改密码改它即可；同一浏览器会话内通过一次后不再重复输入。
+
+> 如果给 Vercel 部署，把输出目录 / `root` 设为 `presentations/`，访问 `https://<your-domain>/` 即进导航页。
 
 ## 怎么用
 

@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>AI 演示文稿 · 导航</title>
+		<link rel="stylesheet" href="nav.css" />
+	</head>
+	<body>
+
+		<!-- 密码门：未解锁前覆盖全屏，解锁后 JS 隐藏 -->
+		<div id="gate">
+			<div class="gate-card">
+				<div class="gate-orb"></div>
+				<h2>进入需要密码</h2>
+				<p>这是内部演示文稿入口，请输入访问密码。</p>
+				<form id="gate-form" autocomplete="off">
+					<input id="gate-pw" class="gate-input" type="password" placeholder="访问密码" aria-label="访问密码" autofocus />
+					<button type="submit" class="gate-btn">进入</button>
+				</form>
+				<div class="gate-hint" id="gate-hint"></div>
+			</div>
+		</div>
+
+		<!-- 解锁后显示的导航内容 -->
+		<main id="nav">
+			<div class="wrap">
+				<span class="eyebrow">AI · PRESENTATIONS</span>
+				<h1>三阶 AI 演示文稿</h1>
+				<p class="lead">从模型到工作流，从<em>常识</em>到<em>进阶</em>。三套同风格演示文稿，一次性部署、统一入口。</p>
+
+				<div class="deck-grid">
+
+					<a class="deck" href="ai-commons/">
+						<div>
+							<span class="tag">01 · COMMONS</span>
+							<div class="title">AI 常识</div>
+							<div class="en">从模型到工作流</div>
+							<p class="desc">面向所有人：模型层与工具层、主流大模型、配套工具、网络/协议代理，到方法论闭环与实例。</p>
+						</div>
+						<div class="go">进入演示 <span class="arrow">→</span></div>
+					</a>
+
+					<a class="deck" href="ai-primary/">
+						<div>
+							<span class="tag">02 · PRIMARY</span>
+							<div class="title">AI 初阶</div>
+							<div class="en">把 AI 真正用起来</div>
+							<p class="desc">把常识落到日常：选模型、配代理、搭工作流的实操路径，让 AI 真正成为生产力。</p>
+						</div>
+						<div class="go">进入演示 <span class="arrow">→</span></div>
+					</a>
+
+					<a class="deck" href="ai-advanced/">
+						<div>
+							<span class="tag">03 · ADVANCED</span>
+							<div class="title">AI 高阶</div>
+							<div class="en">敬请期待</div>
+							<p class="desc">讲给进阶者的内容：模型原理、Agent 架构、生产工程化实践。正在准备中。</p>
+						</div>
+						<div class="badge soon">Soon</div>
+						<div class="go">查看占位 <span class="arrow">→</span></div>
+					</a>
+
+				</div>
+
+				<div class="foot"><a href="ai-commons/">AI 常识</a> · <a href="ai-primary/">AI 初阶</a> · <a href="ai-advanced/">AI 高阶</a></div>
+			</div>
+		</main>
+
+		<script>
+			// ===== 访问密码（纯前端校验，仅作轻量门槛，非真正安全。改密码改这里即可）=====
+			const ACCESS_PASSWORD = 'AI-Presentation';
+			const STORAGE_KEY = 'ai-nav-unlocked';
+
+			const gate = document.getElementById('gate');
+			const nav = document.getElementById('nav');
+			const form = document.getElementById('gate-form');
+			const pwInput = document.getElementById('gate-pw');
+			const hint = document.getElementById('gate-hint');
+
+			function unlock() {
+				gate.classList.add('gone');
+				nav.classList.add('unlocked');
+				try { sessionStorage.setItem(STORAGE_KEY, '1'); } catch (e) {}
+			}
+
+			// 同一浏览器会话内已通过，则保持解锁（关闭标签页即失效）
+			try {
+				if (sessionStorage.getItem(STORAGE_KEY) === '1') { unlock(); }
+			} catch (e) {}
+
+			form.addEventListener('submit', (e) => {
+				e.preventDefault();
+				if (pwInput.value === ACCESS_PASSWORD) {
+					unlock();
+				} else {
+					hint.textContent = '密码不正确，请重试。';
+					gate.classList.remove('shake');
+					// 触发重排以重启动画
+					void gate.offsetWidth;
+					gate.classList.add('shake');
+					pwInput.select();
+				}
+			});
+		</script>
+	</body>
+</html>

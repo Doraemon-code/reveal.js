@@ -1,0 +1,127 @@
+/* ===========================================================
+   Presentations · 导航首页皮肤（复用 ai-commons Keynote 视觉）
+   深黑底 / 电光蓝·紫渐变 / 大标题极简 / 发光描边
+   纯静态页（不依赖 reveal.js）
+   =========================================================== */
+
+:root {
+	--bg:        #05060a;
+	--bg-soft:   #0b0e17;
+	--ink:       #f5f7fb;
+	--muted:     #8b93a4;
+	--blue:      #2e8bff;
+	--blue-2:    #58a6ff;
+	--grad:      linear-gradient(135deg, #2e8bff 0%, #7c5cff 55%, #a855f7 100%);
+	--line:      rgba(255,255,255,0.08);
+	--card:      rgba(255,255,255,0.035);
+	--glow-blue: 0 0 24px rgba(46,139,255,0.55), 0 0 60px rgba(124,92,255,0.35);
+	--font: -apple-system, BlinkMacSystemFont, "SF Pro Display",
+		"PingFang SC", "Microsoft YaHei", "Helvetica Neue", Arial, sans-serif;
+}
+
+* { box-sizing: border-box; }
+
+html, body {
+	margin: 0; padding: 0; min-height: 100%;
+	background: var(--bg); color: var(--ink); font-family: var(--font);
+	-webkit-font-smoothing: antialiased;
+}
+
+/* 背景光晕（固定，轻微漂浮） */
+body::before {
+	content: ""; position: fixed; inset: -20vh; z-index: 0; pointer-events: none;
+	background:
+		radial-gradient(40vw 40vw at 72% 24%, rgba(124,92,255,0.18), transparent 60%),
+		radial-gradient(46vw 46vw at 26% 80%, rgba(46,139,255,0.16), transparent 62%);
+}
+
+/* ---- 解锁后的内容容器（默认隐藏，JS 解锁后显示） ---- */
+#nav { position: relative; z-index: 1; display: none; }
+#nav.unlocked { display: block; }
+
+.wrap { max-width: 980px; margin: 0 auto; padding: 9vh 6vw 10vh; }
+
+/* eyebrow / 标题 */
+.eyebrow {
+	display: block; margin-bottom: 0.7em;
+	font-size: 0.78rem; font-weight: 700; letter-spacing: 0.22em;
+	text-transform: uppercase;
+	background: var(--grad); -webkit-background-clip: text; background-clip: text;
+	-webkit-text-fill-color: transparent; color: transparent;
+}
+h1 {
+	font-size: clamp(2.4rem, 6vw, 4rem); font-weight: 800; line-height: 1.05;
+	letter-spacing: -0.03em; margin: 0 0 0.3em;
+}
+.lead { color: var(--muted); font-size: 1.05rem; line-height: 1.6; max-width: 46ch; margin: 0 0 4vh; }
+.lead em { font-style: normal; color: var(--blue-2); font-weight: 700; }
+
+/* ---- 三入口卡片 ---- */
+.deck-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.1em; }
+@media (max-width: 760px) { .deck-grid { grid-template-columns: 1fr; } }
+
+.deck {
+	position: relative; display: flex; flex-direction: column; justify-content: space-between;
+	min-height: 17em; padding: 1.6em 1.4em 1.4em;
+	border-radius: 18px; text-decoration: none; color: var(--ink);
+	background: var(--card); border: 1px solid var(--line); backdrop-filter: blur(4px);
+	transition: transform .22s ease, box-shadow .22s ease, border-color .22s ease;
+}
+.deck:hover { transform: translateY(-6px); border-color: transparent;
+	box-shadow: var(--glow-blue);
+	background: linear-gradient(var(--bg-soft),var(--bg-soft)) padding-box, var(--grad) border-box; }
+.deck .tag { font-size: 0.72rem; font-weight: 800; letter-spacing: 0.14em; color: var(--blue-2); }
+.deck .title { font-size: 1.7rem; font-weight: 800; letter-spacing: -0.02em; margin: 0.4em 0 0.2em; }
+.deck .en { font-size: 0.9rem; color: var(--muted); font-weight: 600; letter-spacing: 0.04em; }
+.deck .desc { font-size: 0.86rem; color: var(--muted); line-height: 1.55; margin-top: 1em; }
+.deck .go { margin-top: 1.6em; display: flex; align-items: center; gap: 0.4em;
+	font-size: 0.8rem; font-weight: 700; color: var(--blue-2); }
+.deck .go .arrow { transition: transform .2s ease; }
+.deck:hover .go .arrow { transform: translateX(4px); }
+
+/* 状态徽标 */
+.badge { position: absolute; top: 1.4em; right: 1.4em;
+	font-size: 0.62rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase;
+	padding: 0.3em 0.6em; border-radius: 999px; color: var(--muted);
+	background: rgba(255,255,255,0.04); border: 1px solid var(--line); }
+.badge.soon { color: #f0c040; border-color: rgba(240,192,64,0.4); }
+
+/* 底部署名 */
+.foot { margin-top: 5vh; font-size: 0.74rem; color: var(--muted); letter-spacing: 0.06em; }
+.foot a { color: var(--blue-2); text-decoration: none; }
+
+/* ---- 密码门（全屏遮罩） ---- */
+#gate { position: fixed; inset: 0; z-index: 50; display: flex; align-items: center; justify-content: center;
+	background: rgba(5,6,10,0.86); backdrop-filter: blur(6px); }
+#gate.gone { display: none; }
+.gate-card {
+	width: min(360px, 86vw); padding: 2.2em 2em 2em; text-align: center;
+	border-radius: 20px;
+	background: linear-gradient(var(--bg-soft),var(--bg-soft)) padding-box, var(--grad) border-box;
+	border: 1px solid transparent; box-shadow: var(--glow-blue);
+}
+.gate-orb {
+	width: 64px; height: 64px; border-radius: 50%; margin: 0 auto 1.1em;
+	background: radial-gradient(circle at 38% 34%, #cfe4ff 0%, #58a6ff 26%, #7c5cff 60%, #4a1fb8 100%);
+	box-shadow: 0 0 36px rgba(46,139,255,0.6), inset 0 0 22px rgba(255,255,255,0.25);
+}
+.gate-card h2 { margin: 0 0 0.3em; font-size: 1.25rem; font-weight: 800; letter-spacing: -0.01em; }
+.gate-card p { margin: 0 0 1.4em; font-size: 0.82rem; color: var(--muted); line-height: 1.5; }
+.gate-input {
+	width: 100%; padding: 0.85em 1em; font-size: 1rem; color: var(--ink);
+	background: rgba(255,255,255,0.04); border: 1px solid var(--line); border-radius: 12px;
+	outline: none; transition: border-color .2s ease, box-shadow .2s ease; font-family: var(--font);
+}
+.gate-input:focus { border-color: transparent;
+	box-shadow: 0 0 0 1.5px var(--blue-2), var(--glow-blue); }
+.gate-btn {
+	width: 100%; margin-top: 0.9em; padding: 0.85em 1em; font-size: 0.92rem; font-weight: 700;
+	color: #fff; border: none; border-radius: 12px; cursor: pointer; font-family: var(--font);
+	background: var(--grad); box-shadow: var(--glow-blue); transition: transform .15s ease; }
+.gate-btn:active { transform: scale(0.98); }
+.gate-hint { margin-top: 1em; min-height: 1.1em; font-size: 0.78rem; color: #ff6b6b; }
+#gate.shake { animation: shake .35s ease; }
+@keyframes shake {
+	0%,100% { transform: translateX(0); } 20% { transform: translateX(-8px); }
+	40% { transform: translateX(8px); } 60% { transform: translateX(-5px); } 80% { transform: translateX(5px); }
+}
