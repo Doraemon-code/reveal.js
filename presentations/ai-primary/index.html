@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+
+		<title>AI 初阶 · 把 AI 真正用起来</title>
+
+		<link rel="stylesheet" href="vendor/reset.css" />
+		<link rel="stylesheet" href="vendor/reveal.css" />
+		<link rel="stylesheet" href="vendor/theme/black.css" />
+		<link rel="stylesheet" href="vendor/plugin/highlight/monokai.css" />
+		<!-- Keynote 皮肤（复用 ai-commons）-->
+		<link rel="stylesheet" href="keynote.css" />
+		<!-- 本篇新增组件 -->
+		<link rel="stylesheet" href="primary.css" />
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+
+				<!-- 01 · 封面 -->
+				<section data-auto-animate class="cover">
+					<div class="orb" data-id="core"></div>
+					<div class="kw glow-text">AI 初阶 · 把 AI 真正用起来</div>
+				</section>
+
+				<!-- 02 · 初 / 高阶分界 -->
+				<section data-auto-animate class="cover">
+					<div data-id="core" style="display:grid;grid-template-columns:1fr 1fr;gap:0.9em;max-width:30ch;margin:0 auto">
+						<div class="card hot" style="text-align:center;padding:1.1em 1em">
+							<div class="k">今天</div>
+							<div class="v" style="font-size:1.05em;margin-top:0.2em">初阶：开箱即用</div>
+							<div class="d" style="margin-top:0.4em">网页版 / 手机 App，打开就能用，不装环境、不写代码</div>
+						</div>
+						<div class="card" style="text-align:center;padding:1.1em 1em;opacity:0.65">
+							<div class="k">下次</div>
+							<div class="v" style="font-size:1.05em;margin-top:0.2em">高阶：编排</div>
+							<div class="d" style="margin-top:0.4em">命令行、Harness、工作流，把一串活一口气干完</div>
+						</div>
+					</div>
+				</section>
+
+				<!-- 03 · 脉络预告：提问 → 智能体 → 生成场景 -->
+				<section data-auto-animate class="cover">
+					<div class="pipe" data-id="core">
+						<div class="col">
+							<div class="pill on">提问技巧</div>
+							<div class="pill">智能体</div>
+							<div class="pill">生成场景</div>
+						</div>
+						<div class="arrow">→</div>
+						<div class="tf">开箱即用</div>
+					</div>
+				</section>
+
+				<!-- 04 · 提问四要素（总览）-->
+				<section data-auto-animate class="cover">
+					<div class="steps" data-id="core">
+						<div class="sc"><div class="num">01</div><div class="st">提出问题</div><div class="sd">把背景与目标说清楚</div></div>
+						<div class="arrow">→</div>
+						<div class="sc"><div class="num">02</div><div class="st">指定信源</div><div class="sd">告诉它从哪找、引谁的话</div></div>
+						<div class="arrow">→</div>
+						<div class="sc"><div class="num">03</div><div class="st">指定输出格式</div><div class="sd">按你要的形状产出</div></div>
+						<div class="arrow">→</div>
+						<div class="sc hot"><div class="num">04</div><div class="st">指定对话形式</div><div class="sd">扮演谁、怎么和你聊</div></div>
+					</div>
+				</section>
+
+				<!-- 05 · 要素① 提出问题：模糊 vs 具体 -->
+				<section data-auto-animate class="cover">
+					<div class="cases" data-id="core" style="grid-template-columns:1fr 1fr;max-width:46ch">
+						<div class="case" style="background:none;border:1px solid var(--line);box-shadow:none">
+							<div class="ck">模糊</div>
+							<div class="cv" style="font-size:0.62em;white-space:normal">帮我写个周报</div>
+							<div class="cd">模型只能凭空猜你做了什么</div>
+						</div>
+						<div class="case">
+							<div class="ck">具体</div>
+							<div class="cv" style="font-size:0.62em;white-space:normal">本周做了数据审核与公众号排版，按“成果/进展/下周计划”三段写周报，每段两句</div>
+							<div class="cd">给了背景与结构，直接能用</div>
+						</div>
+					</div>
+				</section>
+
+				<!-- 06 · 要素② 指定信源：点击展开 -->
+				<section data-auto-animate class="cover">
+					<div class="ecosys" data-id="core">
+						<div class="card step" data-key="doc"><div class="v" style="font-size:1.05em">官方文档</div></div>
+						<div class="card step" data-key="data"><div class="v" style="font-size:1.05em">某年数据</div></div>
+						<div class="card step" data-key="author"><div class="v" style="font-size:1.05em">某位作者</div></div>
+					</div>
+					<div class="detail" id="src-detail"></div>
+				</section>
+
+				<!-- 07 · 要素③ 指定输出格式：点击展开 -->
+				<section data-auto-animate class="cover">
+					<div class="ecosys" data-id="core">
+						<div class="card step" data-key="md"><div class="v" style="font-size:1.05em">Markdown</div></div>
+						<div class="card step" data-key="table"><div class="v" style="font-size:1.05em">表格</div></div>
+						<div class="card step" data-key="json"><div class="v" style="font-size:1.05em">JSON</div></div>
+						<div class="card step" data-key="email"><div class="v" style="font-size:1.05em">邮件正文</div></div>
+					</div>
+					<div class="detail" id="fmt-detail"></div>
+				</section>
+
+				<!-- 08 · 要素④ 指定对话形式：角色四宫格 -->
+				<section data-auto-animate class="cover">
+					<div data-id="core" class="roles">
+						<div class="card"><div class="rk">苏格拉底</div><div class="rv">不直接给答案，用问题引导你推导</div></div>
+						<div class="card"><div class="rk">面试官</div><div class="rv">追问你的思路，逼出真实掌握度</div></div>
+						<div class="card"><div class="rk">翻译伙伴</div><div class="rv">你写母语它翻目标语，再互改润色</div></div>
+						<div class="card"><div class="rk">辩论对手</div><div class="rv">站对立面挑刺，帮你补漏洞</div></div>
+					</div>
+				</section>
+
+				<!-- 09 · 一句话提问公式（回扣四要素，生成页会再复用）-->
+				<section data-auto-animate class="cover">
+					<div data-id="core" style="margin-top:0.4em;text-align:center">
+						<div class="eyebrow" style="margin-bottom:1.2em">好提问只需一句话</div>
+						<div class="formula">
+							<span>角色</span> + <span>背景</span> + <span>信源</span> + <span>输出格式</span>
+						</div>
+						<div class="sub" style="margin:1.2em auto 0;max-width:30ch">这四个要素，也是图片、视频生成时“写提示词”的同一套逻辑——只是输出形态变了。</div>
+					</div>
+				</section>
+
+				<!-- 10 · 智能体是什么：普通对话 vs 智能体 -->
+				<section data-auto-animate class="cover">
+					<div class="layers" data-id="core" style="max-width:34ch;margin:0 auto">
+						<div class="layer">
+							<div class="lh">普通对话</div>
+							<div class="lv">一问一答</div>
+							<div class="ld">你问一句它回一句，做完一步就停</div>
+						</div>
+						<div class="layer model hot">
+							<div class="lh">智能体</div>
+							<div class="lv">自己跑完一串步骤</div>
+							<div class="ld">模型 + 工具 + 记忆 + 自主决策，能联网、能读文件、能调接口、能顶着你继续推进</div>
+						</div>
+					</div>
+				</section>
+
+				<!-- 11 · 以智谱清言为例：智能体怎么用 -->
+				<section data-auto-animate class="cover">
+					<div class="agent-flow" data-id="core">
+						<div class="agent-logo">
+							<img class="logo" src="logos/qingyan.svg" alt="">
+							<div class="an">智谱清言</div>
+						</div>
+						<div class="flow">
+							<div class="n done">进入「智能体」入口</div>
+							<div class="arrow">→</div>
+							<div class="n">选一个 / 建一个智能体</div>
+							<div class="arrow">→</div>
+							<div class="n">设目标 + 工具 + 知识库</div>
+							<div class="arrow">→</div>
+							<div class="n done">对话即调用，它自己跑</div>
+						</div>
+					</div>
+				</section>
+
+				<!-- 12 · 智能体应用场景（你现场切网站演示，卡片只给提示）-->
+				<section data-auto-animate class="cover">
+					<div class="cases" data-id="core">
+						<div class="case">
+							<div class="ck">场景 01</div>
+							<div class="cv">办公写周报</div>
+							<div class="cd">喂入本周工作，自动按结构成稿</div>
+							<div class="demo-hint">→ 切到现场演示</div>
+						</div>
+						<div class="case">
+							<div class="ck">场景 02</div>
+							<div class="cv">行业资料答疑</div>
+							<div class="cd">挂上知识库，对一摞文档提问</div>
+							<div class="demo-hint">→ 切到现场演示</div>
+						</div>
+						<div class="case">
+							<div class="ck">场景 03</div>
+							<div class="cv">定制学习陪练</div>
+							<div class="cd">设定它当你教练，追问式带你练</div>
+							<div class="demo-hint">→ 切到现场演示</div>
+						</div>
+					</div>
+				</section>
+
+				<!-- 13 · 图片生成：文生图 + 图生图（回扣第 9 页公式）-->
+				<section data-auto-animate class="cover">
+					<div class="maptwo" data-id="core">
+						<div class="mapcol">
+							<div class="h">文生图</div>
+							<div class="items">
+								<div class="card"><div class="v" style="font-size:0.62em;margin:0">输一段描述 → 出图</div></div>
+								<div class="card"><div class="v" style="font-size:0.62em;margin:0">主体：照片里是什么</div></div>
+								<div class="card"><div class="v" style="font-size:0.62em;margin:0">风格 / 光线 / 镜头 / 比例</div></div>
+								<div class="card hot"><div class="v" style="font-size:0.62em;margin:0">同 seed 控一致性</div></div>
+							</div>
+						</div>
+						<div class="mapcol">
+							<div class="h">图生图</div>
+							<div class="items">
+								<div class="card"><div class="v" style="font-size:0.62em;margin:0">给一张图 → 基于它改</div></div>
+								<div class="card"><div class="v" style="font-size:0.62em;margin:0">描述要改成什么</div></div>
+								<div class="card"><div class="v" style="font-size:0.62em;margin:0">控制改多少 vs 保留多少</div></div>
+								<div class="card hot"><div class="v" style="font-size:0.62em;margin:0">同样可用 seed 锁定</div></div>
+							</div>
+						</div>
+					</div>
+					<div class="sub" style="margin:0.9em auto 0;max-width:42ch;text-align:center">主体 + 风格 + 光线 + 比例——和提问四要素是同一套逻辑，只是“输出格式”从文字变成了画面。</div>
+				</section>
+
+				<!-- 14 · 视频生成：Seedance 2.0 支持方式（文生 / 图生 / 首尾帧）-->
+				<section data-auto-animate class="cover">
+					<div class="steps" data-id="core">
+						<div class="sc">
+							<div class="num">文生视频</div>
+							<div class="st">一段文字 → 视频</div>
+							<div class="sd">描述画面与运镜即可</div>
+						</div>
+						<div class="arrow">→</div>
+						<div class="sc">
+							<div class="num">图生视频</div>
+							<div class="st">一张图 → 视频</div>
+							<div class="sd">让画面里的人/物动起来</div>
+						</div>
+						<div class="arrow">→</div>
+						<div class="sc hot">
+							<div class="num">首尾帧</div>
+							<div class="st">起点图 + 终点图</div>
+							<div class="sd">模型补出中间过程</div>
+						</div>
+					</div>
+					<div class="sub" style="margin:1em auto 0;max-width:44ch;text-align:center">三种方式，输入决定能控多少：文字最自由、首尾帧最确定。具体以官网最新为准。</div>
+				</section>
+
+			</div>
+		</div>
+
+		<script src="vendor/reveal.js"></script>
+		<script src="vendor/plugin/notes.js"></script>
+		<script src="vendor/plugin/highlight.js"></script>
+		<script>
+			Reveal.initialize({
+				hash: true,
+				controls: true,
+				progress: true,
+				slideNumber: true,
+				transition: 'fade',
+				transitionSpeed: 'slow',
+				backgroundTransition: 'fade',
+				autoAnimate: true,
+				autoAnimateDuration: 1.0,
+				autoAnimateEasing: 'cubic-bezier(0.22, 0.61, 0.36, 1)',
+				plugins: [RevealHighlight, RevealNotes],
+			});
+		</script>
+		<!-- 贯穿全场的发光 Token 粒子背景 -->
+		<script src="particles.js"></script>
+		<!-- 第 6、7 页点击展开详情 -->
+		<script src="interactions-primary.js"></script>
+	</body>
+</html>

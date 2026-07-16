@@ -1,0 +1,50 @@
+/* ===========================================================
+   AI 初阶 · 本篇新增组件
+   复用 keynote.css 的基底与 .card / .steps / .cases / .maptwo 等
+   这里只补本篇专有的：角色卡、提问公式、智能体流程、场景演示提示、layer 副文案
+   =========================================================== */
+
+/* ---- 第 8 页：对话形式角色四宫格 ---- */
+.roles { display: grid; grid-template-columns: repeat(2, 1fr); gap: 0.85em; max-width: 40ch; margin: 0.4em auto 0; }
+.roles .card { padding: 1.1em 1.2em; }
+.roles .rk { font-size: 0.95em; font-weight: 700; color: var(--ink) !important; margin-bottom: 0.4em; }
+.roles .rv { font-size: 0.6em; color: var(--muted) !important; line-height: 1.5; }
+
+/* ---- 第 9 页：提问公式条 ---- */
+.formula {
+	display: flex; flex-wrap: wrap; justify-content: center; align-items: center;
+	gap: 0.55em; max-width: 60ch; margin: 0 auto;
+	font-size: 1.75em; font-weight: 700; color: var(--muted) !important; line-height: 1.4;
+}
+.formula span {
+	background: linear-gradient(var(--bg-soft),var(--bg-soft)) padding-box, var(--grad) border-box;
+	border: 1px solid transparent; border-radius: 12px;
+	padding: 0.35em 0.7em; color: #fff !important;
+	box-shadow: var(--glow-blue);
+}
+
+/* ---- 第 10 页：layer 补一行副文案（keynote 里 .layer 只有 lh/lv）---- */
+.layer .ld { font-size: 0.58em; color: var(--muted) !important; line-height: 1.5; margin-top: 0.45em; }
+.layer.hot {
+	border-color: transparent; color: #fff;
+	background: linear-gradient(var(--bg-soft),var(--bg-soft)) padding-box, var(--grad) border-box;
+	box-shadow: var(--glow-blue);
+}
+.layer.hot .lv { color: #fff !important; }
+.layer.hot .ld { color: var(--muted) !important; }
+
+/* ---- 第 11 页：智能体流程（logo + 节点链）---- */
+.agent-flow { display: flex; flex-direction: column; align-items: center; gap: 1.1em; max-width: 78ch; margin: 0 auto; width: 100%; }
+.agent-logo { display: flex; flex-direction: column; align-items: center; gap: 0.4em; text-align: center; }
+.agent-logo .logo { width: 2.6em; height: 2.6em; object-fit: contain; }
+.agent-logo .an { font-size: 0.6em; font-weight: 700; color: var(--ink) !important; letter-spacing: 0.04em; }
+.agent-flow .flow { max-width: 100%; }
+
+/* ---- 第 12 页：场景卡右下角「切到现场演示」提示 ---- */
+.demo-hint {
+	margin-top: 0.9em; padding-top: 0.5em;
+	font-size: 0.4em; font-weight: 700; letter-spacing: 0.12em;
+	color: #f0c040 !important;
+	text-shadow: 0 0 12px rgba(240,192,64,0.55), 0 0 28px rgba(240,192,64,0.3);
+	border-top: 1px solid rgba(240,192,64,0.25);
+}

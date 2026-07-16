@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 智谱清言 占位 logo：电光蓝渐变圆角方块 + “青”字。
+     用来与公司级 zhipu.svg 区分；后续替换为真实清言 logo 即可。 -->
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 30">
+	<defs>
+		<linearGradient id="qg" x1="0" y1="0" x2="1" y2="1">
+			<stop offset="0%" stop-color="#2e8bff"/>
+			<stop offset="55%" stop-color="#7c5cff"/>
+			<stop offset="100%" stop-color="#a855f7"/>
+		</linearGradient>
+	</defs>
+	<rect x="3" y="3" width="24" height="24" rx="6" fill="#0b0e17" stroke="url(#qg)" stroke-width="1.4"/>
+	<text x="15" y="21" text-anchor="middle" font-family="-apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="14" font-weight="700" fill="url(#qg)">青</text>
+</svg>
