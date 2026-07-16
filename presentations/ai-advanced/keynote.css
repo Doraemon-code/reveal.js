@@ -1,0 +1,62 @@
+/* ===========================================================
+   AI Advanced · 占位皮肤（复用 ai-commons Keynote 视觉）
+   深黑底 / 电光蓝·紫渐变 / 大标题极简 / 发光描边
+   =========================================================== */
+
+:root {
+	--bg:        #05060a;
+	--bg-soft:   #0b0e17;
+	--ink:       #f5f7fb;
+	--muted:     #8b93a4;
+	--blue:      #2e8bff;
+	--blue-2:    #58a6ff;
+	--grad:      linear-gradient(135deg, #2e8bff 0%, #7c5cff 55%, #a855f7 100%);
+	--line:      rgba(255,255,255,0.08);
+	--card:      rgba(255,255,255,0.035);
+	--glow-blue: 0 0 24px rgba(46,139,255,0.55), 0 0 60px rgba(124,92,255,0.35);
+}
+
+html, body { background: var(--bg) !important; }
+.reveal-viewport, .reveal, .reveal .backgrounds, .reveal .slide-background { background: transparent !important; }
+.reveal { position: relative; z-index: 1; }
+.reveal, .reveal h1, .reveal h2, .reveal h3 {
+	font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display",
+		"PingFang SC", "Microsoft YaHei", "Helvetica Neue", Arial, sans-serif !important;
+	letter-spacing: -0.01em;
+}
+.reveal h1, .reveal h2, .reveal h3 {
+	color: var(--ink) !important; text-transform: none;
+	font-weight: 700; line-height: 1.08; margin: 0;
+}
+
+.reveal section { padding: 0 6%; }
+.reveal section.present { display: flex; flex-direction: column; justify-content: center; }
+
+.eyebrow {
+	display: block; margin-bottom: 0.7em;
+	font-size: 0.4em; font-weight: 700; letter-spacing: 0.22em;
+	text-transform: uppercase;
+	background: var(--grad); -webkit-background-clip: text; background-clip: text;
+	-webkit-text-fill-color: transparent; color: transparent !important;
+}
+.kw {
+	font-size: 2.4em; font-weight: 700; text-align: center; line-height: 1.1;
+	letter-spacing: -0.02em;
+	background: var(--grad); -webkit-background-clip: text; background-clip: text;
+	-webkit-text-fill-color: transparent; color: transparent !important;
+	text-shadow: 0 0 28px rgba(88,166,255,0.35);
+}
+.sub { font-size: 0.72em; color: var(--muted) !important; max-width: 42ch; margin: 1em auto 0; text-align: center; line-height: 1.6; }
+
+/* 发光核心 orb */
+.orb {
+	width: 220px; height: 220px; border-radius: 50%;
+	margin: 0 auto 1.2em;
+	background:
+		radial-gradient(circle at 38% 34%, #cfe4ff 0%, #58a6ff 26%, #7c5cff 60%, #4a1fb8 100%);
+	box-shadow:
+		0 0 60px rgba(46,139,255,0.55),
+		0 0 140px rgba(124,92,255,0.45),
+		inset 0 0 60px rgba(255,255,255,0.25);
+}
+.cover { text-align: center; align-items: center; }

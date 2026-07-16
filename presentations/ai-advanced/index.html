@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+
+		<title>AI 高阶 · 敬请期待</title>
+
+		<!-- 引用本地 vendor 拷贝（与 ai-commons 一致，部署时 presentions/ 自洽） -->
+		<link rel="stylesheet" href="vendor/reset.css" />
+		<link rel="stylesheet" href="vendor/reveal.css" />
+		<link rel="stylesheet" href="vendor/theme/black.css" />
+		<!-- Keynote 皮肤：深黑 / 电光蓝·紫 / 大标题极简 -->
+		<link rel="stylesheet" href="keynote.css" />
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+
+				<section data-auto-animate class="cover">
+					<div class="orb" data-id="core"></div>
+					<span class="eyebrow" style="text-align:center">AI ADVANCED · COMING SOON</span>
+					<div class="kw">AI 高阶</div>
+					<div class="kw" style="font-size:1em;margin-top:0.15em;-webkit-text-fill-color:var(--muted);color:var(--muted)!important;text-shadow:none">敬请期待</div>
+					<p class="sub">这里将放讲给进阶者的内容。<br>从模型原理、Agent 架构到生产工程化实践。</p>
+				</section>
+
+			</div>
+		</div>
+
+		<script src="vendor/reveal.js"></script>
+		<script>
+			Reveal.initialize({
+				hash: true,
+				controls: true,
+				progress: true,
+				transition: 'fade',
+				transitionSpeed: 'slow',
+				backgroundTransition: 'fade',
+			});
+		</script>
+	</body>
+</html>
